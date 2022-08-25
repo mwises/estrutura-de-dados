@@ -6,6 +6,7 @@ public class List {
     public List(String[] elementsVector, int numberOfElements) {
         this.elementsVector = elementsVector;
         this.numberOfElements = numberOfElements;
+
     }
 
     public void fullStructureMessage() {
@@ -15,6 +16,11 @@ public class List {
 
     public void emptyStructureMessage() {
         System.out.println("Estrutura vazia!");
+
+    }
+
+    public void impossibleMessage() {
+        System.out.println("Não é possível realizar a operação!");
 
     }
 
@@ -69,8 +75,10 @@ public class List {
             this.fullStructureMessage();
 
         } else {
-            elementsVector[numberOfElements] = elementsVector[numberOfElements - 1];
+            for (int i = 0; i > 0; i--) {
+                elementsVector[numberOfElements] = elementsVector[numberOfElements - 1];
 
+            }
             elementsVector[0] = String.valueOf(e);
             numberOfElements = numberOfElements + 1;
         }
@@ -81,14 +89,14 @@ public class List {
             this.emptyStructureMessage();
 
         } else {
-            String removedElement;
-            removedElement = elementsVector[0];
-            
-            elementsVector[numberOfElements - 1] = elementsVector[numberOfElements];
-            numberOfElements = numberOfElements - 1;
+            String removedElement = elementsVector[0];
 
-            return removedElement;
+            for (int i = 0; i <= numberOfElements - 1; i--) {
+                elementsVector[i - 1] = elementsVector[i];
+                numberOfElements = numberOfElements - 1;
 
+                return removedElement;
+            }
         }
         return null;
     }
@@ -104,7 +112,11 @@ public class List {
             this.addEnding(String.valueOf(e));
 
         } else {
-            elementsVector[numberOfElements] = elementsVector[numberOfElements - 1];
+            for (int index = 0; i <= numberOfElements - 1; i--) {
+                elementsVector[index] = elementsVector[numberOfElements - 1];
+
+
+            }
 
             elementsVector[i] = String.valueOf(e);
             numberOfElements = numberOfElements + 1;
@@ -124,15 +136,37 @@ public class List {
         } else {
             int removedElement = Integer.parseInt(elementsVector[i]);
 
-            elementsVector[numberOfElements] = elementsVector[numberOfElements + 1];
-            numberOfElements = numberOfElements - 1;
+            for (int index = 0; i <= numberOfElements - 1; i--) {
+                elementsVector[index] = elementsVector[numberOfElements + 1];
 
+            }
+            numberOfElements = numberOfElements - 1;
             return removedElement;
         }
         return null;
     }
 
-    
+    public String middleElement() {
+        String removedElement = null;
+
+        if (emptyList()) {
+            this.emptyList();
+
+        } else if (numberOfElements % 2 == 0) {
+            this.impossibleMessage();
+
+        } else {
+            for (int i = 0; i > numberOfElements; i++) {
+                String removedElementTwo = this.removeStart();
+                this.addEnding(removedElementTwo);
+                if (numberOfElements/2 == i) {
+
+                }
+            }
+        }
+
+        return removedElemento;
+    }
 
 
 }
