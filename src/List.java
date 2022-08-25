@@ -146,11 +146,16 @@ public class List {
         return null;
     }
 
+    public int getNumberOfElements() {
+        return numberOfElements;
+
+    }
+
     public String middleElement() {
         String removedElement = null;
 
         if (emptyList()) {
-            this.emptyList();
+            this.emptyStructureMessage();
 
         } else if (numberOfElements % 2 == 0) {
             this.impossibleMessage();
@@ -160,12 +165,22 @@ public class List {
                 String removedElementTwo = this.removeStart();
                 this.addEnding(removedElementTwo);
                 if (numberOfElements/2 == i) {
+                    return removedElementTwo;
 
                 }
             }
         }
+        return removedElement;
+    }
 
-        return removedElemento;
+    public void firstToFinal() {
+        if (this.emptyList()) {
+            this.emptyStructureMessage();
+
+        } else {
+            int count;
+            
+        }
     }
 
 
