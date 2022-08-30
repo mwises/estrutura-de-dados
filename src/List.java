@@ -1,7 +1,6 @@
 public class List {
     private String elementsVector[];
     private int numberOfElements;
-    private static String myList;
 
     public List(String[] elementsVector, int numberOfElements) {
         this.elementsVector = elementsVector;
@@ -46,8 +45,7 @@ public class List {
         } else {
             int i = numberOfElements;
             elementsVector[i] = e;
-            i = numberOfElements;
-            numberOfElements = numberOfElements - 1;
+            numberOfElements = numberOfElements + 1;
 
         }
     }
@@ -70,16 +68,16 @@ public class List {
 
     }
 
-    public void addStart(int e) {
+    public void addStart(String e) {
         if (this.fullList()) {
             this.fullStructureMessage();
 
         } else {
-            for (int i = 0; i > 0; i--) {
-                elementsVector[numberOfElements] = elementsVector[numberOfElements - 1];
+            for (int i = 0; i < numberOfElements; i++) {
+                elementsVector[i + 1] = elementsVector[i];
 
             }
-            elementsVector[0] = String.valueOf(e);
+            elementsVector[0] = e;
             numberOfElements = numberOfElements + 1;
         }
     }
@@ -91,17 +89,18 @@ public class List {
         } else {
             String removedElement = elementsVector[0];
 
-            for (int i = 0; i <= numberOfElements - 1; i--) {
+            for (int i = 1; i < numberOfElements; i++) {
                 elementsVector[i - 1] = elementsVector[i];
-                numberOfElements = numberOfElements - 1;
 
-                return removedElement;
             }
+            numberOfElements = numberOfElements - 1;
+
+            return removedElement;
         }
         return null;
     }
 
-    public void addPosition(int e, int i) {
+    public void addPosition(String e, int i) {
         if (this.fullList()) {
             this.fullStructureMessage();
             
@@ -109,21 +108,20 @@ public class List {
             this.addStart(e);
 
         } else if (i >= numberOfElements) {
-            this.addEnding(String.valueOf(e));
+            this.addEnding(e);
 
         } else {
-            for (int index = 0; i <= numberOfElements - 1; i--) {
-                elementsVector[index] = elementsVector[numberOfElements - 1];
-
+            for (int index = numberOfElements; index > i; index--) {
+                elementsVector[index] = elementsVector[index - 1];
 
             }
 
-            elementsVector[i] = String.valueOf(e);
+            elementsVector[i] = e;
             numberOfElements = numberOfElements + 1;
         }
     }
 
-    public Object removePosition(int i) {
+    public String removePosition(int i) {
         if (this.emptyList()) {
             this.emptyStructureMessage();
 
@@ -134,9 +132,9 @@ public class List {
             removeEnd();
 
         } else {
-            int removedElement = Integer.parseInt(elementsVector[i]);
+            String removedElement = elementsVector[i];
 
-            for (int index = 0; i <= numberOfElements - 1; i--) {
+            for (int index = 0; i <= numberOfElements; i++) {
                 elementsVector[index] = elementsVector[numberOfElements + 1];
 
             }
@@ -151,6 +149,7 @@ public class List {
 
     }
 
+    //desconsidera daqui p baixo pq é a outra atividade (q n ta feito nem a metade).
     public String middleElement() {
         String removedElement = null;
 
@@ -184,4 +183,13 @@ public class List {
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numberOfElements; i++) {
+            sb.append(elementsVector[i]);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
