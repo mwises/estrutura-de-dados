@@ -149,7 +149,7 @@ public class List {
 
     }
 
-    //desconsidera daqui p baixo pq é a outra atividade (q n ta feito nem a metade).
+    //desconsidera daqui p baixo pq é a     outra atividade (q n ta feito nem a metade).
     public String middleElement() {
         String removedElement = null;
 

@@ -22,6 +22,7 @@ public class Main {
         myList.addPosition("45646", 3);
         myList.addPosition("5464", 4);
         myList.removePosition(3);
+        myList.removePosition(2);
         System.out.println(myList);
 
     }
