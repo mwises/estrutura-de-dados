@@ -50,22 +50,22 @@ public class List {
         }
     }
 
-    public void removeEnd() {
+    public String removeEnd() {
+        String removedElement = null;
 
         if (this.emptyList()) {
             this.emptyStructureMessage();
 
         } else {
             int i;
-            String removedElement;
 
             i = numberOfElements - 1;
             removedElement = elementsVector[i];
             numberOfElements = i;
 
-            System.out.println("Número removido: " + removedElement);
         }
 
+        return removedElement;
     }
 
     public void addStart(String e) {
@@ -73,8 +73,8 @@ public class List {
             this.fullStructureMessage();
 
         } else {
-            for (int i = 0; i < numberOfElements; i++) {
-                elementsVector[i + 1] = elementsVector[i];
+            for (int i = numberOfElements - 1; i > 0; i--) {
+                elementsVector[i] = elementsVector[i - 1];
 
             }
             elementsVector[0] = e;
@@ -144,27 +144,20 @@ public class List {
         return null;
     }
 
-    public int getNumberOfElements() {
-        return numberOfElements;
 
-    }
-
-    //desconsidera daqui p baixo pq é a     outra atividade (q n ta feito nem a metade).
-    public String middleElement() {
+    public String getIndex(int index) {
         String removedElement = null;
 
         if (emptyList()) {
             this.emptyStructureMessage();
 
-        } else if (numberOfElements % 2 == 0) {
-            this.impossibleMessage();
-
         } else {
-            for (int i = 0; i > numberOfElements; i++) {
-                String removedElementTwo = this.removeStart();
-                this.addEnding(removedElementTwo);
-                if (numberOfElements/2 == i) {
-                    return removedElementTwo;
+            for (int i = 0; i < numberOfElements; i++) {
+                String auxRemoveStart = this.removeStart();
+                addEnding(auxRemoveStart);
+
+                if (i == index) {
+                    removedElement = auxRemoveStart;
 
                 }
             }
@@ -172,13 +165,40 @@ public class List {
         return removedElement;
     }
 
+    public String MiddleElement() {
+        return getIndex(numberOfElements/2);
+
+    }
+
     public void firstToFinal() {
         if (this.emptyList()) {
             this.emptyStructureMessage();
 
         } else {
-            int count;
+            String firstNumber = removeStart();
+            String lastNumber = removeEnd();
 
+            addStart(lastNumber);
+            addEnding(firstNumber);
+
+        }
+    }
+
+    public void invertedList() {
+        for (int i = 0; i <= numberOfElements + 1; i++) {
+            addPosition(removeEnd(),i);
+
+        }
+    }
+
+    public void removeRepeatedElements() {
+        for (int i = 0; i < numberOfElements; i++) {
+            for (int j = i + 1; j < numberOfElements; j++) {
+                if (getIndex(i) == getIndex(j)) {
+                    removePosition(j);
+                    j--;
+                }
+            }
         }
     }
 
