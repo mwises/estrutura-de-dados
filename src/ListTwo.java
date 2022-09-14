@@ -1,10 +1,11 @@
 public class ListTwo {
     No topOfDaList;
 
-    public ListTwo(int[] noArray, No topOfDaList) {
+    public ListTwo(No topOfDaList) {
         this.topOfDaList = topOfDaList;
 
     }
+
     public boolean emptyList() {
         if (topOfDaList == null) {
             return true;
@@ -100,8 +101,5 @@ public class ListTwo {
         }
         return i;
     }
-
-
-
 
 }

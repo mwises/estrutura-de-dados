@@ -1,9 +1,9 @@
 public class No {
-    int[] storedElement;
+    int storedElement;
     No nextNo;
 
-    public No(int[] storedElement, No nextNo) {
+    public No(int storedElement) {
         this.storedElement = storedElement;
-        this.nextNo = nextNo;
+        No nextNo = null;
     }
 }
