@@ -13,6 +13,5 @@ public class Main {
 
         myList.removeRepeatedElements();
         System.out.println(myList);
-
     }
 }
