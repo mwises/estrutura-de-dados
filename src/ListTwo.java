@@ -102,4 +102,39 @@ public class ListTwo {
         return i;
     }
 
+    public int removePosition(int i) {
+        int removed = 0;
+
+        if (emptyList()) {
+            removed = this.removeEnding();
+
+        } else {
+            int aux = 0;
+            removed = aux;
+            aux = topOfDaList.storedElement;
+            int index = 1;
+
+            while (index < i && removed != 0) {
+                aux = removed
+            }
+        }
+        return removed;
+    }
+
+    public No returnLastElement() {
+        if (emptyList()) {
+            impossibleMessage();
+
+        } else {
+            No aux = topOfDaList;
+
+            while (aux.nextNo != null) {
+                aux = aux.nextNo;
+
+            }
+            return aux;
+        }
+        return null;
+    }
+
 }
