@@ -4,7 +4,7 @@ public class Teste {
         ListTwo linkedList = new ListTwo(new No(9));
 
 
-        linkedList.addStart(new No(4));
+        linkedList.returnLastElement();
         System.out.println("lista do moises: " + linkedList.topOfDaList.storedElement);
     }
 }

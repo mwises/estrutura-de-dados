@@ -55,7 +55,20 @@ public class ListTwo {
         }
     }
 
-    public int removeEnding() {
+    public No removeStart() {
+        No removed = null;
+        if (emptyList()) {
+            this.emptyStructureMessage();
+
+        } else {
+            removed = topOfDaList;
+            topOfDaList = topOfDaList.nextNo;
+
+        }
+        return removed;
+    }
+
+    public No removeEnding() {
         No removed = null;
 
         if (emptyList()) {
@@ -73,7 +86,7 @@ public class ListTwo {
             }
             aux.nextNo = null;
         }
-        return 0;
+        return removed;
     }
 
     public int addPosition(No e, int i) {
@@ -102,20 +115,29 @@ public class ListTwo {
         return i;
     }
 
-    public int removePosition(int i) {
-        int removed = 0;
+    public No removePosition(int i) {
+        No removed = null;
 
         if (emptyList()) {
             removed = this.removeEnding();
 
         } else {
-            int aux = 0;
+            No aux = null;
             removed = aux;
-            aux = topOfDaList.storedElement;
+            aux = topOfDaList;
             int index = 1;
 
-            while (index < i && removed != 0) {
-                aux = removed
+            while (index < i && removed != null) {
+                aux = removed;
+                removed = removed.nextNo;
+                index = index + 1;
+            }
+            if (removed == null) {
+                removed = this.removeEnding();
+
+            } else {
+                aux.nextNo = removed.nextNo;
+
             }
         }
         return removed;
@@ -135,6 +157,21 @@ public class ListTwo {
             return aux;
         }
         return null;
+    }
+
+    public No returnPenultimate() {
+
+        if (emptyList()) {
+            this.impossibleMessage();
+
+        }
+        No aux = topOfDaList;
+
+        while (aux.nextNo.nextNo != null) {
+            aux = aux.nextNo;
+
+        }
+        return aux;
     }
 
 }
