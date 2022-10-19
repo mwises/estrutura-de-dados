@@ -81,4 +81,38 @@ public class ListD {
     public void adicionarUltimo(DNo no) {
         adicionarAnterior(fim, no);
     }
+
+    public void removerNo(DNo no) {
+        DNo u = getAnterior(no);
+        DNo w = getProximo(no);
+        u.setProximo(w);
+        w.setAnterior(u);
+        no.setProximo(null);
+        no.setAnterior(null);
+
+    }
+
+    public Boolean temAnterior(DNo no) {
+        return (no != inicio);
+    }
+
+    public Boolean temSucessor(DNo no) {
+        return (no != inicio);
+
+    }
+
+    public String toString() {
+        DNo ponteiro = inicio.getProximo();
+
+        int i = 1;
+
+        while (ponteiro.getProximo() != null) {
+            if (i == 1) {
+                ponteiro.getElemento();
+                i++;
+                ponteiro = ponteiro.getProximo();
+            }
+        }
+        return null;
+    }
 }
