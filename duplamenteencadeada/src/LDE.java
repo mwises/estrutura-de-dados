@@ -69,13 +69,42 @@ public class LDE {
     // esquerda para direita
     public Object remover_pos_v1(int pos) {
         //TODO: Implementar o remover_pos
+        if (!isEmpty()) {
+            if (pos == 0)
+                    this.removerPrimeiro();
+            else if (pos == tamanho)
+                    this.removerUltimo();
+            else {
+                DNode aux = inicio;
+                for (int i = 0; i < pos -1; i++) {
+                    aux = aux.getNext();
+                }
+                aux.getPrev().setNext(aux.getNext());
+                aux.getNext().setPrev(aux.getPrev());
+            };
 
+        }
         return null;
     }
     // direita para esquerda
     public Object remover_pos_v2(int pos) {
         //TODO: Implementar o remover_pos
+        if (!isEmpty()) {
+            if (pos == 0)
+                this.removerPrimeiro();
+            else if (pos == tamanho)
+                this.removerUltimo();
+            else {
+                DNode aux = inicio;
+                for (int i = 0; i < pos -1; i++) {
+                    aux = aux.getNext();
+                }
+                aux.getNext().setPrev(aux.getPrev());
+                aux.getPrev().setNext(aux.getNext());
+                tamanho--;
+            };
 
+        }
         return null;
     }
 
